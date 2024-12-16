@@ -1,0 +1,16 @@
+{
+  "name": "nowy-folder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "sass src/scss/main.scss src/css/main.css",
+    "watch-css": "sass --watch src/scss/main.scss:src/css/main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.83.0"
+  }
+}

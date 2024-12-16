@@ -1,0 +1,26 @@
+// Typografia
+$font-stack: 'Arial, sans-serif';
+$base-font-size: 16px;
+
+// Breakpointy
+$breakpoints: (
+  "small": 576px,
+  "medium": 768px,
+  "large": 992px,
+  "xlarge": 1200px
+);
+// Kolory
+$primary-color: #2f3e2f;
+$secondary-color: #486b45;
+$light-gray: #e0e0e0;
+$white: #ffffff;
+$footer-bg-color: #3e463e; 
+$footer-text-color: #cfcfcf; 
+
+
+// Rozmiary
+$size: (
+  sm: 768px,
+  md: 1024px,
+  lg: 1200px
+);

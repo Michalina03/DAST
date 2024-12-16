@@ -1,0 +1,133 @@
+// Importy zmiennych i mixinów
+@import "../utils/variables" ;
+@import "../utils/mixins" ;
+
+.footer {
+  background-color: #3e463e;
+  color: #fff;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+
+  // Flexbox dla głównego układu
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    @include breakpoint(768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  // Sekcja logo i opisu
+  &__logo {
+    max-width: 300px;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #cfcfcf;
+    }
+  }
+
+  // Sitemap
+  &__sitemap {
+    h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          color: #cfcfcf;
+          text-decoration: none;
+          font-size: 0.9rem;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  // Social media ikony
+  &__social {
+    h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      display: flex;
+      gap: 1rem;
+
+      li {
+        list-style: none;
+
+        a {
+          color: #cfcfcf;
+          font-size: 1.5rem;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  // Dolna stopka
+  &__bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid #555;
+    padding-top: 1rem;
+    color: #aaa;
+  }
+}
+.footer__social {
+    text-align: center; // Wyśrodkowanie napisu i ikon
+  
+    h4 {
+      margin-bottom: 1rem; // Odstęp między napisem a ikonami
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center; // Wyśrodkowanie ikon w poziomie
+      gap: 1rem; // Odstęp między ikonami
+    }
+  
+    li {
+      a {
+        color: #cfcfcf; // Kolor ikon
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+  
+        &:hover {
+          color: #fff; // Efekt hover
+        }
+      }
+    }
+  }
+  
