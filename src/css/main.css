@@ -1,7 +1,11 @@
 .header {
-  background-color: white;
+  background-color: #ffffff;
   padding: 1rem 0;
   border-bottom: 1px solid #e0e0e0;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0;
 }
 .header .container {
   display: flex;
@@ -10,6 +14,12 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .header__logo {
   display: flex;
@@ -53,6 +63,52 @@
 }
 .header__nav .header__menu li a:hover, .header__nav .header__menu li a.active {
   color: #486b45;
+}
+@media (max-width: 768px) {
+  .header__nav .header__menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 0;
+  }
+  .header__nav .header__menu.active {
+    display: flex;
+  }
+  .header__nav .header__menu li {
+    margin: 0.5rem 0;
+  }
+}
+.header__nav .hamburger {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 1rem;
+  right: 1rem;
+  padding: 4px;
+  border: 1px solid #2f3e2f;
+  background: #ffffff;
+  cursor: pointer;
+}
+.header__nav .hamburger .menuIcon {
+  display: block;
+}
+.header__nav .hamburger .closeIcon {
+  display: none;
+}
+.header__nav .hamburger.active .menuIcon {
+  display: none;
+}
+.header__nav .hamburger.active .closeIcon {
+  display: block;
+}
+@media (max-width: 768px) {
+  .header__nav .hamburger {
+    display: block;
+  }
 }
 
 .footer {
@@ -154,19 +210,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 3rem 2rem;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 .home__hero-content {
   max-width: 50%;
 }
 .home__hero-content h1 {
   font-size: 2.8rem;
-  color: #333;
+  color: #2f3e2f;
   margin-bottom: 1rem;
 }
 .home__hero-content p {
   font-size: 1rem;
-  color: #666;
+  color: #486b45;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -176,7 +232,7 @@
 }
 .home__hero-content .buttons button {
   background-color: #2f3e2f;
-  color: #fff;
+  color: #ffffff;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 5px;
@@ -195,7 +251,7 @@
 }
 .home__hero-content .buttons button:nth-child(2):hover {
   background-color: #2f3e2f;
-  color: #fff;
+  color: #ffffff;
 }
 .home__hero-image {
   max-width: 45%;
@@ -206,26 +262,14 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-@media (max-width: 768px) {
-  .home__hero {
-    flex-direction: column;
-    text-align: center;
-  }
-  .home__hero-content, .home__hero-image {
-    max-width: 100%;
-  }
-  .home__hero-content {
-    margin-bottom: 2rem;
-  }
-}
 
 .home__discover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: #2f372c;
-  color: #fff;
+  background-color: #2f3e2f;
+  color: #ffffff;
   padding: 3rem 2rem;
 }
 .home__discover-image {
@@ -245,31 +289,29 @@
 .home__discover-content h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #fff;
 }
 .home__discover-content p {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  color: #ddd;
+  color: #cfcfcf;
 }
 .home__discover-content button {
-  background-color: #2f3e2f;
-  color: #fff;
+  background-color: #486b45;
+  color: #ffffff;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  border: 1px solid #2f3e2f;
+  border: 1px solid #486b45;
 }
 .home__discover-content button:hover {
-  background-color: rgb(25.0091743119, 32.9908256881, 25.0091743119);
+  background-color: rgb(51.1363636364, 75.9943181818, 49.0056818182);
 }
 .home__discover-content button:hover {
-  background-color: rgb(25.0091743119, 32.9908256881, 25.0091743119);
-  color: #fff;
+  background-color: rgb(51.1363636364, 75.9943181818, 49.0056818182);
 }
 .home__discover-bottom {
   flex: 1 1 100%;
@@ -281,31 +323,22 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-@media (max-width: 768px) {
-  .home__discover {
-    flex-direction: column;
-    text-align: center;
-  }
-  .home__discover-image, .home__discover-content, .home__discover-bottom {
-    flex: 1 1 100%;
-  }
-}
 
 .news-updates {
   padding: 3rem 2rem;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .news-updates__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
 }
 .news-updates__header h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: #2f3e2f;
 }
 .news-updates__header a {
   text-decoration: none;
@@ -328,18 +361,18 @@
 }
 .news-updates__content-main h3 {
   font-size: 1.5rem;
-  color: #333;
+  color: #2f3e2f;
   margin-bottom: 0.5rem;
 }
 .news-updates__content-main p {
   font-size: 1rem;
-  color: #666;
+  color: #486b45;
 }
 .news-updates__content-main span {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #999;
+  color: #e0e0e0;
 }
 .news-updates__content-list {
   display: flex;
@@ -358,33 +391,148 @@
 }
 .news-updates__content-list .article .article-text h4 {
   font-size: 1.2rem;
-  color: #333;
+  color: #2f3e2f;
   margin-bottom: 0.3rem;
 }
 .news-updates__content-list .article .article-text p {
   font-size: 0.9rem;
-  color: #666;
+  color: #486b45;
   margin-bottom: 0.3rem;
 }
 .news-updates__content-list .article .article-text span {
   font-size: 0.8rem;
-  color: #999;
+  color: #e0e0e0;
 }
-@media (max-width: 768px) {
-  .news-updates__content {
-    grid-template-columns: 1fr;
+
+.about {
+  padding: 2rem;
+  background-color: #ffffff;
+  font-family: "Arial, sans-serif";
+}
+.about__header {
+  text-align: center;
+  color: #2f3e2f;
+}
+.about__header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.about__header p {
+  font-size: 1rem;
+  color: #486b45;
+  margin-bottom: 2rem;
+}
+.about__image {
+  margin: 0 auto;
+  max-width: 80%;
+  border-radius: 10px;
+}
+.about__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.about__stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: #3e463e;
+  padding: 2rem;
+  border-radius: 10px;
+  color: #ffffff;
+}
+.about__stat-box {
+  text-align: center;
+}
+.about__stat-box .stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #486b45;
+}
+.about__stat-box .stat-value sup {
+  font-size: 1rem;
+  color: #cfcfcf;
+}
+.about__stat-box .stat-label {
+  font-size: 0.9rem;
+  color: #cfcfcf;
+}
+
+.works {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  font-family: "Arial, sans-serif";
+}
+.works__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+.works__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .works__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  .news-updates__content-main {
-    text-align: center;
+}
+.works__item {
+  display: flex;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.works__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.works__item-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .works__item-image {
+    width: 200px;
+    height: 200px;
   }
-  .news-updates__content-list .article {
-    flex-direction: column;
-    text-align: center;
-  }
-  .news-updates__content-list .article img {
-    width: 100%;
-    height: auto;
-  }
+}
+.works__item-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+.works__item-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+.works__item-date {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  margin-bottom: 0.5rem;
+}
+.works__item-description {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
 }
 
 /*# sourceMappingURL=main.css.map */

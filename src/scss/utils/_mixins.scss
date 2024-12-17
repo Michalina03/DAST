@@ -38,3 +38,20 @@
     }
   }
 
+  @mixin breakpoint($point) {
+    @if $point == sm {
+      @media (max-width: 768px) {
+        @content;
+      }
+    }
+    @else if $point == md {
+      @media (min-width: 769px) and (max-width: 1024px) {
+        @content;
+      }
+    }
+    @else if $point == lg {
+      @media (min-width: 1025px) {
+        @content;
+      }
+    }
+  }

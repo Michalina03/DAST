@@ -1,13 +1,15 @@
-// Importy zmiennych i mixinów
-@import "../utils/variables" ;
-@import "../utils/mixins" ;
-
+@import "../utils/variables";
+@import "../utils/mixins";
 
 // Header Stylowanie
 .header {
-  background-color: white;
+  background-color: $white; // Używamy nowej zmiennej
   padding: 1rem 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid $light-gray; // Używamy nowej zmiennej
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0; // Header przy samej górze ekranu
 
   .container {
     display: flex;
@@ -35,14 +37,14 @@
 
     .header__title {
       h1 {
-        font-size: 1.2rem;
+        font-size: $font-size-medium;
         font-weight: bold;
         margin: 0;
-        color: #2f3e2f;
+        color: $primary-color;
       }
       p {
-        font-size: 0.8rem;
-        color: #666;
+        font-size: $font-size-small;
+        color: $text-color;
         margin: 0;
       }
     }
@@ -51,7 +53,7 @@
   &__nav {
     flex: 1;
     display: flex;
-    justify-content: flex-end;  // Przemieszczamy na prawo
+    justify-content: flex-end;
 
     .header__menu {
       display: flex;
@@ -64,26 +66,69 @@
 
         a {
           text-decoration: none;
-          color: #2f3e2f;
+          color: $primary-color;
           font-weight: bold;
           transition: color 0.3s;
 
           &:hover,
           &.active {
-            color: #486b45;
+            color: $secondary-color;
           }
         }
       }
 
       @include breakpoint(sm) {
+        display: none;
         flex-direction: column;
-        align-items: flex-end;
+        width: 100%;
+        background-color: $white; // Używamy zmiennej $white
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+
+        &.active {
+          display: flex;
+        }
 
         li {
           margin: 0.5rem 0;
         }
       }
     }
+
+    .hamburger {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 1rem;
+      right: 1rem;
+      padding: 4px;
+      border: 1px solid $primary-color;
+      background: $white; // Używamy zmiennej $white
+      cursor: pointer;
+
+      .menuIcon {
+        display: block;
+      }
+
+      .closeIcon {
+        display: none;
+      }
+
+      &.active .menuIcon {
+        display: none;
+      }
+
+      &.active .closeIcon {
+        display: block;
+      }
+    }
+
+    @include breakpoint(sm) {
+      .hamburger {
+        display: block;
+      }
+    }
   }
 }
-

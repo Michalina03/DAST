@@ -1,0 +1,91 @@
+@import "../utils/variables" ;
+@import "../utils/mixins" ;
+
+
+// Sekcja główna
+.about {
+  padding: 2rem;
+  background-color: $white;
+  font-family: $font-stack;
+
+  // Nagłówki
+  &__header {
+    text-align: center;
+    color: $primary-color;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+
+      @include breakpoint("medium") {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      color: $secondary-color;
+      margin-bottom: 2rem;
+
+      @include breakpoint("small") {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  // Obrazek z ograniczoną szerokością
+  &__image {
+    margin: 0 auto;
+    max-width: 80%;
+    border-radius: 10px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @include breakpoint("medium") {
+      max-width: 90%;
+    }
+  }
+
+  // Sekcja statystyk
+  &__stats {
+    @include flex-center; // Mixin do flexboxa
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: $footer-bg-color;
+    padding: 2rem;
+    border-radius: 10px;
+    color: $white;
+
+    @include breakpoint("medium") {
+      gap: 1rem;
+      flex-direction: column;
+    }
+  }
+
+  // Pojedynczy box statystyk
+  &__stat-box {
+    text-align: center;
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $secondary-color;
+
+      sup {
+        font-size: 1rem;
+        color: $footer-text-color;
+      }
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: $footer-text-color;
+    }
+  }
+}
+ 

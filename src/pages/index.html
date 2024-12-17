@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DAST</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAST</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="../scripts/postLoad.js" defer></script>
+    <script src="../scripts/toggle.js" defer></script>
+  </head>
 <body>
     <header class="header">
         <div class="container">
@@ -20,11 +23,16 @@
           <nav class="header__nav">
             <ul class="header__menu">
               <li><a href="#" class="active">HOME</a></li>
-              <li><a href="#">O NAS</a></li>
-              <li><a href="#">OFERTA</a></li>
-              <li><a href="#">GALERIA</a></li>
-              <li><a href="#">KONTAKT</a></li>
+              <li><a href="about.html">O NAS</a></li>
+              <li><a href="offer.html">OFERTA</a></li>
+              <li><a href="galery.html">GALERIA</a></li>
+              <li><a href="blog.html">BLOG</a></li>
+              <li><a href="conctact.html">KONTAKT</a></li>
             </ul>
+            <button class="hamburger">
+              <i class="menuIcon material-icons">menu</i>
+              <i class="closeIcon material-icons">close</i>
+            </button>
           </nav>
         </div>
       </header>
@@ -33,7 +41,12 @@
         <!-- Lewa część - tekst -->
         <div class="home__hero-content">
           <h1>A Beautiful Adventure Awaits</h1>
-          <p>Lorem ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Tincidunt Facilisis Nunc.</p>
+          <p>Lorem ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Tincidunt Facilisis Nunc.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
+          </p>
         </div>
         <!-- Prawa część - obrazek -->
         <div class="home__hero-image">
@@ -50,6 +63,8 @@
         <div class="home__discover-content">
           <h2>Discover Yourself With Nature</h2>
           <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc.
           </p>
@@ -70,43 +85,7 @@
       
         <!-- Zawartość sekcji -->
         <div class="news-updates__content">
-          <!-- Główny artykuł -->
-          <div class="news-updates__content-main">
-            <img src="../img/ogrod4.jpg" alt="Ogród 4" />
-            <h3>Plants Around Us</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt facilisis nunc lorem sit.
-            </p>
-            <span>December 29, 2021</span>
-          </div>
-      
-          <!-- Lista mniejszych artykułów -->
-          <div class="news-updates__content-list">
-            <div class="article">
-              <img src="../img/ogrod5.jpg" alt="Ogród 5" />
-              <div class="article-text">
-                <h4>Lush Gardens</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-                <span>December 16, 2021</span>
-              </div>
-            </div>
-            <div class="article">
-              <img src="../img/ogrod6.jpg" alt="Ogród 6" />
-              <div class="article-text">
-                <h4>Exotic Nature</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-                <span>November 17, 2021</span>
-              </div>
-            </div>
-            <div class="article">
-              <img src="../img/ogrod7.jpg" alt="Ogród 7" />
-              <div class="article-text">
-                <h4>It Starts with Soil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-                <span>November 3, 2021</span>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </section>
       
@@ -128,6 +107,7 @@
               <li><a href="#">O nas</a></li>
               <li><a href="#">Oferta</a></li>
               <li><a href="#">Galeria</a></li>
+              <li><a href="#">Inspiracje</a></li>
               <li><a href="#">Kontakt</a></li>
             </ul>
           </div>
@@ -136,8 +116,8 @@
           <div class="footer__social">
             <h4>Connect</h4>
             <ul>
-              <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+              <li><a href="https://www.facebook.com/dastogrody" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="mailto:biuro@dastogrody.pl" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
             </ul>
           </div>
         </div>
