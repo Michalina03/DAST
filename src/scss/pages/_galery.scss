@@ -1,0 +1,111 @@
+// // Import zmiennych
+@import "../utils/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-stack;
+    background-color: $white;
+    color: $text-color;
+    @include flex-center; // Mixin flexbox
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 40px;
+}
+.title_galery {
+    text-align: center;
+    color: $primary-color;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+
+      @include breakpoint("medium") {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      color: $secondary-color;
+      margin-bottom: 2rem;
+
+      @include breakpoint("small") {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+
+
+// Galeria
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: $white;
+            padding: 10px 0;
+            font-size: 1rem;
+            text-transform: uppercase;
+            @include flex-center; // Mixin flexbox
+        }
+
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+}
+
+// Responsywność
+@include breakpoint(sm) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@include breakpoint(md) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@include breakpoint(lg) {
+    .gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

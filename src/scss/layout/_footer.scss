@@ -2,11 +2,17 @@
 @import "../utils/variables" ;
 @import "../utils/mixins" ;
 
+
 .footer {
-  background-color: #3e463e;
-  color: #fff;
-  padding: 2rem 1rem;
+  background-color: $footer-bg-color;
+  color: $white;
   font-family: Arial, sans-serif;
+  background-color: $primary-color;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 
   // Flexbox dla głównego układu
   &__content {
@@ -97,13 +103,14 @@
     text-align: center;
     margin-top: 2rem;
     font-size: 0.8rem;
-    border-top: 1px solid #555;
+    border-top: 1px solid $footer-bg-color;
     padding-top: 1rem;
-    color: #aaa;
+    color: $text-color;
   }
 }
 .footer__social {
     text-align: center; // Wyśrodkowanie napisu i ikon
+    
   
     h4 {
       margin-bottom: 1rem; // Odstęp między napisem a ikonami
