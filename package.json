@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build-css": "sass src/scss/main.scss src/css/main.css --style compressed",
-    "watch-css": "sass --watch src/scss/main.scss:src/css/main.css"
+    "build-css": "sass src/scss/main.scss src/css/main.css",
+    "watch-css": "sass --watch src/scss/main.scss:src/css/main.css",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/scss/main.scss:src/css/main.css --style compressed"
   },
   "keywords": [],
   "author": "",
