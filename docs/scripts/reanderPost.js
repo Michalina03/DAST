@@ -1,37 +1,37 @@
 const data = {
     posts: [
         {
-            image: "../img/ogrod4.jpg",
+            image: "img/ogrod4.jpg",
             title: "Main Post Title",
             description: "This is the description for the main post.",
             date: "2023-10-01",
         },
         {
-            image: "../img/ogrod5.jpg",
+            image: "img/ogrod5.jpg",
             title: "Other Post 1 Title",
             description: "This is the description for the first other post.",
             date: "2023-09-30",
         },
         {
-            image: "../img/ogrod6.jpg",
+            image: "img/ogrod6.jpg",
             title: "Other Post 2 Title",
             description: "This is the description for the second other post.",
             date: "2023-09-29",
         },
         {
-            image: "../img/ogrod7.jpg",
+            image: "img/ogrod7.jpg",
             title: "Other Post 3 Title",
             description: "This is the description for the third other post.",
             date: "2023-09-28",
         },
         {
-            image: "../img/ogrod6.jpg",
+            image: "img/ogrod6.jpg",
             title: "Other Post 2 Title",
             description: "This is the description for the second other post.",
             date: "2023-09-29",
         },
         {
-            image: "../img/ogrod7.jpg",
+            image: "img/ogrod7.jpg",
             title: "Other Post 3 Title",
             description: "This is the description for the third other post.",
             date: "2023-09-28",
