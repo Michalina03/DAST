@@ -1,25 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const menu = document.querySelector(".header__menu");
-    const menuItems = document.querySelectorAll(".header__menu li a");
-    const hamburger = document.querySelector(".hamburger");
-    const closeIcon = document.querySelector(".closeIcon");
-    const menuIcon = document.querySelector(".menuIcon");
-  
-    function toggleMenu() {
-      if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-        closeIcon.style.display = "none";
-        menuIcon.style.display = "block";
-      } else {
-        menu.classList.add("active");
-        closeIcon.style.display = "block";
-        menuIcon.style.display = "none";
-      }
-    }
-  
-    hamburger.addEventListener("click", toggleMenu);
-  
-    menuItems.forEach(function (menuItem) {
-      menuItem.addEventListener("click", toggleMenu);
+  const menu = document.querySelector(".header__menu");
+  const menuItems = document.querySelectorAll(".header__menu li a");
+  const hamburger = document.querySelector(".hamburger");
+
+  function toggleMenu() {
+    const isActive = menu.classList.toggle("active");
+    hamburger.classList.toggle("active", isActive);
+  }
+
+  hamburger.addEventListener("click", toggleMenu);
+
+  menuItems.forEach(function (menuItem) {
+    menuItem.addEventListener("click", () => {
+      menu.classList.remove("active");
+      hamburger.classList.remove("active");
     });
   });
+});

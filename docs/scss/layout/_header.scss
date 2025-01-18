@@ -98,30 +98,30 @@
     }
 
     .hamburger {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      top: 1rem;
-      right: 1rem;
-      padding: 4px;
-      border: 1px solid $primary-color;
-      background: $white; // Używamy zmiennej $white
-      cursor: pointer;
-
       .menuIcon {
         display: block;
       }
-
+    
       .closeIcon {
         display: none;
       }
-
-      &.active .menuIcon {
-        display: none;
+    
+      &.active {
+        .menuIcon {
+          display: none;
+        }
+        .closeIcon {
+          display: block;
+        }
       }
-
-      &.active .closeIcon {
-        display: block;
+    }
+    
+    .header__menu {
+      display: none; // Ukryj menu domyślnie
+    
+      &.active {
+        display: flex; // Pokaż menu, gdy jest aktywne
+        flex-direction: column;
       }
     }
 
