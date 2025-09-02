@@ -1,15 +1,14 @@
 @import "../utils/variables";
 @import "../utils/mixins";
 
-// Header Stylowanie
 .header {
-  background-color: $white; // Używamy nowej zmiennej
+  background-color: $white;
   padding: 1rem 0;
-  border-bottom: 1px solid $light-gray; // Używamy nowej zmiennej
+  border-bottom: 1px solid $light-gray;
   position: fixed;
   width: 100%;
-  z-index: 3;
-  top: 0; // Header przy samej górze ekranu
+  z-index: 999;
+  top: 0;
 
   .container {
     display: flex;
@@ -18,116 +17,122 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
-
-    @include breakpoint(sm) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
   }
 
   &__logo {
     display: flex;
     align-items: center;
+    gap: 0.6rem;
 
     img {
-      width: 50px;
+      width: 50px; // mniejsze logo
       height: auto;
-      margin-right: 10px;
     }
 
     .header__title {
       h1 {
-        font-size: $font-size-medium;
-        font-weight: bold;
+        font-size: 1.5rem; // minimalnie mniejszy nagłówek
         margin: 0;
         color: $primary-color;
       }
       p {
-        font-size: $font-size-small;
-        color: $text-color;
+        font-size: $font-size-small; // mniejszy podtytuł
         margin: 0;
+        color: $secondary-color;
       }
     }
   }
 
   &__nav {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-
     .header__menu {
       display: flex;
       list-style: none;
-      margin: 0;
-      padding: 0;
+      gap: 2rem;
 
-      li {
-        margin: 0 1rem;
+      li a {
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: bold;
+        transition: color 0.3s;
 
-        a {
-          text-decoration: none;
-          color: $primary-color;
-          font-weight: bold;
-          transition: color 0.3s;
-
-          &:hover,
-          &.active {
-            color: $secondary-color;
-          }
+        &:hover, &.active {
+          color: $secondary-color;
         }
       }
 
+      // Mobile menu - fullscreen
       @include breakpoint(sm) {
         display: none;
         flex-direction: column;
-        width: 100%;
-        background-color: $white; // Używamy zmiennej $white
-        position: absolute;
-        top: 60px;
+        position: fixed;
+        top: 0;
         left: 0;
-        padding: 10px 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.95);
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateX(100%);
 
         &.active {
+          opacity: 1;
+          transform: translateX(0);
           display: flex;
         }
 
         li {
-          margin: 0.5rem 0;
-        }
-      }
-    }
+          margin: 0;
+          text-align: center;
 
-    .hamburger {
-      .menuIcon {
-        display: block;
-      }
-    
-      .closeIcon {
-        display: none;
-      }
-    
-      &.active {
-        .menuIcon {
-          display: none;
-        }
-        .closeIcon {
-          display: block;
+          a {
+            font-size: 1.4rem;
+          }
         }
       }
     }
-    
-    .header__menu {
-      display: none; // Ukryj menu domyślnie
-    
-      &.active {
-        display: flex; // Pokaż menu, gdy jest aktywne
-        flex-direction: column;
-      }
-    }
+  }
 
+&__hamburger {
+    display: none;
     @include breakpoint(sm) {
-      .hamburger {
-        display: block;
+      display: flex;
+      position: absolute;
+      right: 1rem; // hamburger po prawej
+      top: 2rem;
+    }
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+
+    .header__hamburger-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 5px;
+
+      .header__hamburger-line {
+        width: 28px;
+        height: 3px;
+        background-color: $primary-color;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+    }
+
+    &.is-active {
+      .header__hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .header__hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .header__hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
       }
     }
   }
