@@ -1,43 +1,36 @@
-@import "../utils/variables" ;
-@import "../utils/mixins" ;
+@import "../utils/variables";
+@import "../utils/mixins";
 
-
-// Sekcja główna
 .about {
-  padding: 2rem;
+  padding: 3rem 1.5rem;
   background-color: $white;
+  text-align: center;
   font-family: $font-stack;
 
-  // Nagłówki
   &__header {
-    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
     color: $primary-color;
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.8rem;
       font-weight: bold;
+      margin-bottom: 1rem;
 
       @include breakpoint("medium") {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
     }
 
     p {
-      font-size: 1rem;
-      color: $secondary-color;
-      margin-bottom: 2rem;
-
-      @include breakpoint("small") {
-        font-size: 0.9rem;
-      }
+      font-size: 1.2rem;
+      color: $text-color;
     }
   }
 
-  // Obrazek z ograniczoną szerokością
   &__image {
-    margin: 0 auto;
-    max-width: 80%;
+    max-width: 85%;
+    margin: 0 auto 2rem;
     border-radius: 10px;
 
     img {
@@ -45,36 +38,32 @@
       height: auto;
       border-radius: 10px;
     }
-
-    @include breakpoint("medium") {
-      max-width: 90%;
-    }
   }
 
-  // Sekcja statystyk
   &__stats {
-    @include flex-center; // Mixin do flexboxa
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
-    background-color: $footer-bg-color;
+    background-color: $secondary-color;
     padding: 2rem;
     border-radius: 10px;
     color: $white;
 
     @include breakpoint("medium") {
-      gap: 1rem;
       flex-direction: column;
     }
   }
 
-  // Pojedynczy box statystyk
   &__stat-box {
     text-align: center;
+    flex: 1;
+    min-width: 150px;
 
     .stat-value {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: bold;
-      color: $secondary-color;
+      color: $light-gray;
 
       sup {
         font-size: 1rem;
@@ -83,9 +72,42 @@
     }
 
     .stat-label {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: $footer-text-color;
     }
   }
+
+  &__cta {
+    margin-top: 3rem;
+    text-align: center;
+    background-color: $primary-color;
+    color: $white;
+    padding: 2rem;
+    border-radius: 10px;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: $secondary-color;
+      color: $white;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
 }
- 
