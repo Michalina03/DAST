@@ -6,14 +6,15 @@
 .footer {
   background-color: $footer-bg-color;
   color: $white;
-  font-family: Arial, sans-serif;
+  font-family:$font-stack;
   background-color: $primary-color;
   text-align: center;
   padding: 1rem 0;
   position: relative;
   bottom: 0;
   width: 100%;
-
+  padding-left: 5%;
+   padding-right: 8%;
   // Flexbox dla głównego układu
   &__content {
     display: flex;
