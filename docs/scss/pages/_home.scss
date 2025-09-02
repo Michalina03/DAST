@@ -10,7 +10,6 @@
   padding: 3rem 2rem;
   background-color: $white;
 
-  // Lewa część z tekstem
   &-content {
     max-width: 50%;
 
@@ -30,6 +29,8 @@
     .buttons {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap; // umożliwia zawijanie przy małych ekranach
+      justify-content: center; // centrowanie na telefonie
 
       button {
         @include button($primary-color, $white);
@@ -49,7 +50,6 @@
     }
   }
 
-  // Prawa część z obrazkiem
   &-image {
     max-width: 45%;
 
@@ -61,7 +61,6 @@
     }
   }
 
-  // Responsywność
   @include breakpoint("medium") {
     flex-direction: column;
     text-align: center;
@@ -73,6 +72,14 @@
 
     &-content {
       margin-bottom: 2rem;
+
+      h1 {
+        font-size: 2rem; // mniejszy nagłówek na telefonie
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
     }
   }
 }
@@ -83,7 +90,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: $primary-color; // Ciemnozielone tło
+  background-color: $primary-color;
   color: $white;
   padding: 3rem 2rem;
 
@@ -104,12 +111,12 @@
     padding: 1rem;
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 1.5rem;
       color: $footer-text-color;
@@ -145,6 +152,16 @@
     &-content,
     &-bottom {
       flex: 1 1 100%;
+      padding: 0 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &-content h2 {
+      font-size: 1.8rem;
+    }
+
+    &-content p {
+      font-size: 0.95rem;
     }
   }
 }
@@ -161,9 +178,10 @@
     border-bottom: 1px solid $light-gray;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap; // pozwala na zawijanie elementów
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 2rem; // mniejszy nagłówek na telefonie
       color: $primary-color;
     }
 
@@ -171,6 +189,7 @@
       text-decoration: none;
       color: $primary-color;
       font-weight: bold;
+      margin-top: 0.5rem;
 
       &:hover {
         color: darken($primary-color, 10%);
@@ -205,7 +224,7 @@
       span {
         display: block;
         margin-top: 0.5rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         color: $light-gray;
       }
     }
@@ -220,15 +239,15 @@
         gap: 1rem;
 
         img {
-          width: 100px;
-          height: 100px;
+          width: 80px;
+          height: 80px;
           object-fit: cover;
           border-radius: 8px;
         }
 
         .article-text {
           h4 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: $primary-color;
             margin-bottom: 0.3rem;
           }
@@ -249,6 +268,7 @@
 
     @include breakpoint("medium") {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
 
       &-main {
         text-align: center;
@@ -257,6 +277,7 @@
       &-list {
         .article {
           flex-direction: column;
+          align-items: center;
           text-align: center;
 
           img {
@@ -268,5 +289,3 @@
     }
   }
 }
-
-  

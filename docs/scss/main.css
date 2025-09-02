@@ -125,7 +125,6 @@
   padding: 1rem 0;
   position: relative;
   bottom: 0;
-  width: 100%;
   padding-left: 5%;
   padding-right: 8%;
 }
@@ -241,6 +240,8 @@
 .home__hero-content .buttons {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .home__hero-content .buttons button {
   background-color: #2f3e2f;
@@ -299,11 +300,11 @@
   padding: 1rem;
 }
 .home__discover-content h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 .home__discover-content p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   color: #cfcfcf;
@@ -347,15 +348,17 @@
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 .news-updates__header h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #2f3e2f;
 }
 .news-updates__header a {
   text-decoration: none;
   color: #2f3e2f;
   font-weight: bold;
+  margin-top: 0.5rem;
 }
 .news-updates__header a:hover {
   color: rgb(25.0091743119, 32.9908256881, 25.0091743119);
@@ -383,7 +386,7 @@
 .news-updates__content-main span {
   display: block;
   margin-top: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #e0e0e0;
 }
 .news-updates__content-list {
@@ -396,14 +399,14 @@
   gap: 1rem;
 }
 .news-updates__content-list .article img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 8px;
 }
 .news-updates__content-list .article .article-text h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #2f3e2f;
   margin-bottom: 0.3rem;
 }
