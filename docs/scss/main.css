@@ -32,7 +32,7 @@
 .header__logo .header__title p {
   font-size: 0.8rem;
   margin: 0;
-  color: #486b45;
+  color: #666;
 }
 .header__nav .header__menu {
   display: flex;
@@ -218,12 +218,14 @@
 
 .hero {
   background-color: #ffffff;
-  padding: 3.4rem 2rem;
+  padding: 3rem 2rem;
+  position: relative;
 }
 .hero__container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -244,6 +246,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  z-index: 2;
 }
 .hero__title {
   font-size: 2.5rem;
@@ -255,6 +258,7 @@
 @media (max-width: 768px) {
   .hero__title {
     font-size: 2rem;
+    margin-top: 1rem;
   }
 }
 .hero__description {
@@ -269,6 +273,7 @@
 @media (max-width: 768px) {
   .hero__description {
     font-size: 16px;
+    margin-bottom: 1.5rem;
     padding: 0 1rem;
   }
 }
@@ -276,16 +281,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  text-decoration: none;
+  justify-content: center;
 }
 @media (max-width: 768px) {
   .hero__buttons {
     flex-direction: column;
-    align-items: center;
     width: 100%;
+    gap: 1rem;
   }
 }
-.hero__button {
+.hero__buttons .hero__button {
   background-color: #2f3e2f;
   color: #ffffff;
   padding: 0.75rem 1.5rem;
@@ -296,40 +301,50 @@
   transition: all 0.3s ease;
   text-decoration: none;
 }
-.hero__button:hover {
+.hero__buttons .hero__button:hover {
   background-color: rgb(25.0091743119, 32.9908256881, 25.0091743119);
 }
-.hero__button--secondary {
+.hero__buttons .hero__button:hover, .hero__buttons .hero__button:focus {
+  text-decoration: none;
+}
+.hero__buttons .hero__button--secondary {
   background-color: transparent;
   color: #2f3e2f;
   border: 2px solid #2f3e2f;
 }
-.hero__button--secondary:hover {
+.hero__buttons .hero__button--secondary:hover {
   background-color: #2f3e2f;
   color: #ffffff;
-  text-decoration: none;
 }
-.hero__image-wrapper {
+.hero .hero__image-wrapper {
   flex: 1;
   text-align: center;
   overflow: hidden;
 }
 @media (max-width: 768px) {
-  .hero__image-wrapper {
+  .hero .hero__image-wrapper {
     order: -1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
-.hero__image {
+.hero .hero__image {
   max-width: 70%;
   height: auto;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-top-left-radius: 50% 30%;
   border-top-right-radius: 50% 30%;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  margin-left: auto;
 }
 @media (max-width: 768px) {
-  .hero__image {
+  .hero .hero__image {
     max-width: 85%;
+    margin-left: 0;
   }
 }
 
