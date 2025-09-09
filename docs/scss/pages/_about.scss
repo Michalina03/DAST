@@ -104,114 +104,147 @@
     }
   }
 }
+
 .specializations {
-  background-color: $primary-color;
-  color: $white;
+  background-color: $bg-soft;
+  color: $text-color;
   font-family: $font-stack;
-  padding: 4rem 2rem;
+  padding: 4.5rem 1rem;
+  min-height: 77vh;
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
 
   &__title {
     font-size: $hero-title-size;
+    color: $brand-green-dark;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
 
     @include respond-to("medium") {
       font-size: $hero-title-size-mobile;
     }
   }
 
+  /* Kontener z 3 elementami - używamy flex, jednak responsywnie stackujemy */
   &__grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+    gap: $gap;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap; /* pozwala na łamanie się na mniejszych ekranach */
   }
 
+  /* Pojedyncza karta - WSZYSTKIE trzy mają ten sam styl */
   &__item {
-    display: flex;
-    align-items: center;        
-    justify-content: center;    
-    flex: 1 1 30%;
-    min-width: 280px;
-    background-color: $secondary-color;
-    border-radius: 0.5rem;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    background: $card-bg;
+    border-radius: $card-radius;
+    box-shadow: $card-shadow;
     overflow: hidden;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: fadeInUp 0.8s forwards;
+    display: flex;
+    flex-direction: column; /* obraz na górze, treść pod spodem - ten sam styl dla wszystkich */
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    min-width: 0; /* zapobiega overflow w flexie */
 
-    &--reverse {
-      flex-direction: row-reverse;
+    /* domyślnie - na mobile: pełna szerokość */
+    flex: 1 1 100%;
+    max-width: 100%;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 48px rgba(33,50,31,0.10);
     }
 
-    @include respond-to("small") {
-      flex-direction: column;
-      align-items: center;  
-      text-align: center;
-      &--reverse {
-        flex-direction: column;
-      }
+    /* Na ekranach >= medium ustawiamy trzy obok siebie */
+    @include respond-to("medium") {
+      flex: 0 0 calc((100% - (2 * #{$gap})) / 3); /* trzy karty w rzędzie */
+      max-width: calc((100% - (2 * #{$gap})) / 3);
     }
   }
 
+  /* Wrapper obrazka z wymuszeniem proporcji 3:2 + fallback */
   &__image-wrapper {
-    flex: 1;
-    height: 220px;             
+    width: 100%;
+    position: relative;
     overflow: hidden;
-    border-radius: 0.5rem;
-    padding: 0.5rem;           // odstęp od krawędzi boxa
-    display: flex;
-    align-items: center;       
-    justify-content: center;   
+    background: $muted-green;
 
+    /* nowoczesne: aspect-ratio (3:2), fallback padding */
+    aspect-ratio: $image-aspect;
+    /* fallback for older browsers */
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 66.6667%; /* 2/3 = 66.6667% */
+    }
+
+    /* obraz ustylowany absolutnie, żeby pokrywał wrapper */
     img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 0.5rem;    // delikatne zaokrąglenie zdjęcia
-      transition: transform 0.5s;
+      transition: transform .5s ease;
+      will-change: transform;
     }
 
     &:hover img {
       transform: scale(1.05);
     }
-
-    @include respond-to("small") {
-      width: 100%;
-      height: 180px;          
-      margin-bottom: 0.5rem;   // zmniejszony odstęp od tekstu
-    }
   }
 
   &__content {
-    flex: 1;
-    padding: 0.5rem 1rem;      // mniej paddingu, tekst bliżej obrazka
+    padding: $card-padding;
     display: flex;
     flex-direction: column;
-    justify-content: center;  
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-    &-title {
-      font-size: $font-size-medium;
-      margin-bottom: 0.5rem;  // mniej odstępu pod tytułem
+  &__item-title {
+    font-size: $font-size-medium;
+    color: $brand-green;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  &__item-text {
+    font-size: $font-size-small;
+    color: $text-color;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Kilka drobnych dopasowań na małych ekranach */
+  @include respond-to("small") {
+    padding: 3rem 0.75rem;
+
+    &__title {
+      margin-bottom: 1.25rem;
     }
 
-    &-text {
-      font-size: $font-size-small;
-      line-height: 1.5;
-      color: $light-gray;
+    &__item {
+      margin-bottom: 0.75rem;
+    }
+
+    &__image-wrapper {
+      aspect-ratio: $image-aspect; /* nadal 3:2, ale wysokość dopasuje się do szerokości urządzenia */
     }
   }
 }
 
-// Animacja pojawiania się
+/* animacja delikatnego pojawiania - możesz ją wyłączyć jeśli masz swój globalny preload */
 @keyframes fadeInUp {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }

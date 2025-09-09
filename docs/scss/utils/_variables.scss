@@ -17,12 +17,16 @@ $breakpoints: (
 // Kolory
 $primary-color: #2f3e2f;
 $secondary-color: #486b45;
+$brand-green: #2C7436;      // nieco ciemniejszy, intensywniejszy akcent
+$brand-green-dark: #1E4F28; // mocniejszy akcent dla tytułów
 $light-gray: #e0e0e0;
 $white: #ffffff;
 $footer-bg-color: #3e463e; 
 $footer-text-color: #cfcfcf; 
-$text-color: #666;
-
+$text-color: #555;
+$bg-soft: #e2fcdd;          // delikatne tło sekcji
+$card-bg: #FFFFFF;          // tło kart
+$muted-green: #EAF6EA;      // subtelne tło przy obrazach
 
 
 // Rozmiary
@@ -33,4 +37,19 @@ $size: (
 );
 
 
+$breakpoints: (
+  "small": 576px,
+  "medium": 768px,
+  "large": 992px,
+  "xlarge": 1200px
+);
 
+// Layout helpers
+$gap: 1.25rem;               // główny gap między kartami
+$container-max-width: 1200px;
+$image-aspect: 3 / 2;        // stosunek obrazu 3:2 (wykorzystujemy aspect-ratio)
+
+// Dodatkowe parametry kart
+$card-radius: 12px;
+$card-padding: 1.25rem;
+$card-shadow: 0 12px 30px rgba(33,50,31,0.07);

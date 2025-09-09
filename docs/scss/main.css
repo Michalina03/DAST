@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header {
   background-color: #ffffff;
   padding: 1rem 0;
@@ -32,7 +33,7 @@
 .header__logo .header__title p {
   font-size: 0.8rem;
   margin: 0;
-  color: #666;
+  color: #555;
 }
 .header__nav .header__menu {
   display: flex;
@@ -190,7 +191,7 @@
   font-size: 0.8rem;
   border-top: 1px solid #3e463e;
   padding-top: 1rem;
-  color: #666;
+  color: #555;
 }
 
 .footer__social {
@@ -263,7 +264,7 @@
 }
 .hero__description {
   font-size: 1.2rem;
-  color: #666;
+  color: #555;
   margin-bottom: 2rem;
   line-height: 1.8;
   max-width: 100%;
@@ -571,7 +572,7 @@
 }
 .about-section__text {
   font-size: 1.2rem;
-  color: #666;
+  color: #555;
   line-height: 1.6;
 }
 .about-section__image {
@@ -589,15 +590,27 @@
 }
 
 .specializations {
-  background-color: #2f3e2f;
-  color: #ffffff;
+  background-color: #e2fcdd;
+  color: #555;
   font-family: "Arial, sans-serif";
-  padding: 4rem 2rem;
+  padding: 4.5rem 1rem;
+  min-height: 77vh;
+  /* Kontener z 3 elementami - używamy flex, jednak responsywnie stackujemy */
+  /* Pojedyncza karta - WSZYSTKIE trzy mają ten sam styl */
+  /* Wrapper obrazka z wymuszeniem proporcji 3:2 + fallback */
+  /* Kilka drobnych dopasowań na małych ekranach */
+}
+.specializations__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 .specializations__title {
   font-size: 2.5rem;
+  color: #1E4F28;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
 }
 @media (min-width: 768px) {
   .specializations__title {
@@ -606,89 +619,105 @@
 }
 .specializations__grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  gap: 1.25rem;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap; /* pozwala na łamanie się na mniejszych ekranach */
 }
 .specializations__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 30%;
-  min-width: 280px;
-  background-color: #486b45;
-  border-radius: 0.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(33, 50, 31, 0.07);
   overflow: hidden;
-  transform: translateY(20px);
-  opacity: 0;
-  animation: fadeInUp 0.8s forwards;
+  display: flex;
+  flex-direction: column; /* obraz na górze, treść pod spodem - ten sam styl dla wszystkich */
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  min-width: 0; /* zapobiega overflow w flexie */
+  /* domyślnie - na mobile: pełna szerokość */
+  flex: 1 1 100%;
+  max-width: 100%;
+  /* Na ekranach >= medium ustawiamy trzy obok siebie */
 }
-.specializations__item--reverse {
-  flex-direction: row-reverse;
+.specializations__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(33, 50, 31, 0.1);
 }
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .specializations__item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .specializations__item--reverse {
-    flex-direction: column;
+    flex: 0 0 calc((100% - 2 * 1.25rem) / 3); /* trzy karty w rzędzie */
+    max-width: calc((100% - 2 * 1.25rem) / 3);
   }
 }
 .specializations__image-wrapper {
-  flex: 1;
-  height: 220px;
+  width: 100%;
+  position: relative;
   overflow: hidden;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #EAF6EA;
+  /* nowoczesne: aspect-ratio (3:2), fallback padding */
+  aspect-ratio: 1.5;
+  /* fallback for older browsers */
+  /* obraz ustylowany absolutnie, żeby pokrywał wrapper */
+}
+.specializations__image-wrapper::before {
+  content: "";
+  display: block;
+  padding-bottom: 66.6667%; /* 2/3 = 66.6667% */
 }
 .specializations__image-wrapper img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-  border-radius: 0.5rem;
-  transition: transform 0.5s;
+  transition: transform 0.5s ease;
+  will-change: transform;
 }
 .specializations__image-wrapper:hover img {
   transform: scale(1.05);
 }
-@media (min-width: 576px) {
-  .specializations__image-wrapper {
-    width: 100%;
-    height: 180px;
-    margin-bottom: 0.5rem;
-  }
-}
 .specializations__content {
-  flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.5rem;
 }
-.specializations__content-title {
+.specializations__item-title {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  color: #2C7436;
+  margin: 0;
+  font-weight: 600;
 }
-.specializations__content-text {
+.specializations__item-text {
   font-size: 0.8rem;
-  line-height: 1.5;
-  color: #e0e0e0;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+@media (min-width: 576px) {
+  .specializations {
+    padding: 3rem 0.75rem;
+  }
+  .specializations__title {
+    margin-bottom: 1.25rem;
+  }
+  .specializations__item {
+    margin-bottom: 0.75rem;
+  }
+  .specializations__image-wrapper {
+    aspect-ratio: 1.5; /* nadal 3:2, ale wysokość dopasuje się do szerokości urządzenia */
+  }
 }
 
+/* animacja delikatnego pojawiania - możesz ją wyłączyć jeśli masz swój globalny preload */
 @keyframes fadeInUp {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -697,7 +726,7 @@ body {
   margin: 0;
   font-family: "Arial, sans-serif";
   background-color: #ffffff;
-  color: #666;
+  color: #555;
   font-size: 16px;
   padding-top: 60px;
 }
@@ -723,7 +752,7 @@ body {
 .services .section-description {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: rgb(76.5, 76.5, 76.5);
+  color: rgb(59.5, 59.5, 59.5);
 }
 .services .service-cards {
   display: grid;
@@ -788,7 +817,7 @@ body {
 .services .service-cards .card .content p {
   margin: 0 0 0.5rem;
   font-size: 0.8rem;
-  color: #666;
+  color: #555;
 }
 .services .service-cards .card .content .read-more {
   font-size: 0.8rem;
@@ -928,7 +957,7 @@ body {
 }
 .works__item-description {
   font-size: 16px;
-  color: #666;
+  color: #555;
   line-height: 1.4;
 }
 
