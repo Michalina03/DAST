@@ -1,122 +1,178 @@
 @import "../utils/variables";
 
+.offer-hero {
+  width: 100%;
+  height: 100vh; /* dokładnie cały ekran */
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: stretch;
+  overflow: hidden; /* zapobiega przewijaniu tej sekcji na desktop */
+  margin-top: 0; /* zakładam, że header nie nachodzi - dopasuj jeśli masz sticky header */
 
-body {
-    margin: 0;
-    font-family: $font-stack;
-    background-color: $white;
-    color: $text-color;
-    font-size: $base-font-size;
-    padding-top: 60px; 
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
-  
-  // Sekcja usług
-  .services {
-    text-align: center;
-    padding: 2rem;
-    padding-top: 3rem; // Zmniejszenie górnego paddingu
-    margin-top: -2rem; // Podciągnięcie sekcji do góry
+
+  /* OBRAZ - po lewej na desktop, na górze na mobile */
+  &__image {
+    flex: 1 1 50%;
+    min-width: 360px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      /* zachowujemy clip na desktopzie */
+      clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+      -webkit-clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+      transition: transform .45s ease, clip-path .25s ease;
+      will-change: transform;
+    }
+  }
+
+  /* TREŚĆ - po prawej na desktop, poniżej na mobile */
+  &__content {
+    flex: 1 1 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    .section-title {
-      font-size: $font-size-medium * 2;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      span {
-        color: $primary-color;
-      }
-    }
-    
-  
-    .section-description {
-      font-size: $font-size-medium;
-      margin-bottom: 2rem;
-      color: darken($text-color, 10%);
-    }
-  
-    // Karty usług - grid
-    .service-cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin: 0 auto;
-      max-width: map-get($size, lg);
-      max-width: 1200px; // Dostosowanie szerokości dla lepszego wyglądu
-  
-      @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-  
-      @media (min-width: 1200px) {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    align-items: flex-start;
+    background-color: $bg-soft;
+    padding: clamp(1rem, 2.5vw, 3.5rem);
+    box-sizing: border-box;
+    overflow: hidden; /* na desktop nie przewijamy całej sekcji */
 
-      @media (min-width: map-get($breakpoints, "medium")) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-  
-      @media (min-width: map-get($breakpoints, "xlarge")) {
-        grid-template-columns: repeat(3, 1fr);
-      }
-  
-      .card {
-        margin: 0 auto; // Wyśrodkowanie kart wewnątrz siatki
-        display: flex;
-        background-color: $white;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        align-items: center;
-  
-        // Ikona w karcie
-        .icon {
-          background-color: $secondary-color;
-          width: 60px;
-          height: 60px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          margin-right: 1rem;
-  
-          img {
-            width: 30px;
-            height: 30px;
-          }
-        }
-  
-        // Treść karty
-        .content {
-            text-align: left;
-          
-  
-          h3 {
-            margin: 0 0 0.5rem;
-            font-size: $font-size-medium;
-            color: $primary-color;
-            font-weight: bold;
-          }
-  
-          p {
-            margin: 0 0 0.5rem;
-            font-size: $font-size-small;
-            color: $text-color;
-          }
-  
-          .read-more {
-            font-size: $font-size-small;
-            color: $secondary-color;
-            font-weight: bold;
-            text-decoration: none;
-  
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
+    /* Jeżeli chcesz zezwolić na scroll wewnątrz content (gdy treści dużo),
+       odkomentuj poniższe i usuń overflow: hidden powyżej:
+    & { overflow: auto; } 
+    */
+
+    .offer-hero__title {
+      font-size: clamp(1.4rem, 3vw, 2.6rem);
+      line-height: 1.12;
+      margin: 0 0 0.6rem;
+      color: $brand-green-dark;
+    }
+
+    .offer-hero__text {
+      font-size: clamp(0.95rem, 1.6vw, $font-size-medium);
+      margin: 0 0 1rem;
+      line-height: 1.45;
+      color: $primary-color;
+      max-width: 62ch;
+    }
+
+    /* kafelki */
+    &__services, /* fallback: selector jeśli masz zagnieżdżenie */
+    .offer-hero__services {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: clamp(0.5rem, 1.2vw, $gap);
+      margin-top: 0.6rem;
     }
   }
-  
+
+  /* pojedyncze kafelki */
+  &__card {
+    background: $card-bg;
+    color: $primary-color;
+    padding: clamp(0.7rem, 1.6vw, $card-padding);
+    border-radius: clamp(0.4rem, 0.9vw, $card-radius);
+    box-shadow: $card-shadow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: transform .22s ease, box-shadow .22s ease;
+    min-height: 96px;
+
+    &:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(33,50,31,0.12); }
+
+    &-title { font-size: clamp(1rem, 1.8vw, $font-size-medium); margin-bottom: .4rem; color: $brand-green-dark; }
+    &-text  { font-size: clamp(.85rem, 1.4vw, $font-size-small); line-height: 1.35; }
+
+    &--contact { background: $brand-green; color: $white;
+      a { color: $white; text-decoration: underline; }
+      h3{color:$white;}
+    }
+  }
+}
+
+/* ----------------- MEDIA: tablet/mały laptop ----------------- */
+@media (max-width: 1024px) {
+  .offer-hero {
+    /* nadal pełny ekran, ale zmniejszamy paddingy i dopasowujemy obraz */
+    height: 100vh;
+    min-height: 100vh;
+
+    &__image img { clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%); }
+    &__content { padding: clamp(.8rem, 2.8vw, 2.2rem); }
+    &__services { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  }
+}
+
+/* ----------------- MOBILE: obraz NA GÓRZE i zajmuje cały ekran ----------------- */
+@media (max-width: 900px) {
+  .offer-hero {
+    flex-direction: column;
+    height: auto; /* cała sekcja powinna być przewijalna: najpierw 100vh obraz, potem content */
+    min-height: auto;
+    overflow: visible;
+
+    &__wrapper { flex-direction: column; height: auto; }
+
+    &__image {
+      order: 0;
+      width: 100%;
+      height: 100vh; /* obraz zajmuje cały ekran telefonu */
+      min-height: 100vh;
+      max-height: 100vh;
+      img {
+        height: 100vh;
+        max-height: 100vh;
+        width: 100%;
+        object-fit: cover;
+        clip-path: none; /* usuń przycinanie na mobile dla lepszego kadrowania */
+      }
+    }
+
+    &__content {
+      order: 1;
+      width: 100%;
+      height: auto;
+      padding: 1rem;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    /* kafelki -> jeden pod drugim (jeśli chcesz, możesz zmienić na 2 kolumny) */
+    .offer-hero__services {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .offer-hero__card {
+      text-align: left;
+      padding: 0.9rem;
+    }
+  }
+}
+
+/* bardzo małe ekrany */
+@media (max-width: 480px) {
+  .offer-hero__image img { height: 100vh; max-height: 100vh; }
+  .offer-hero__content { padding: 0.8rem; }
+  .offer-hero__title { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+}

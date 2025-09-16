@@ -109,32 +109,53 @@
   }
 }
 .footer__social {
-    text-align: center; // Wyśrodkowanie napisu i ikon
-    
-  
-    h4 {
-      margin-bottom: 1rem; // Odstęp między napisem a ikonami
-    }
-  
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center; // Wyśrodkowanie ikon w poziomie
-      gap: 1rem; // Odstęp między ikonami
-    }
-  
-    li {
-      a {
-        color: #cfcfcf; // Kolor ikon
-        font-size: 1.5rem;
-        transition: color 0.3s ease;
-  
-        &:hover {
-          color: #fff; // Efekt hover
-        }
+  text-align: center;
+  margin-top: 2rem;
+
+  &-title {
+    font-family: $font-stack;
+    font-size: $font-size-medium;
+    color: $white;
+    margin-bottom: 1rem;
+  }
+
+  &-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  &-item {
+    .footer__social-link {
+      color: $white;
+      font-size: 1.8rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        color: $brand-green;
+        transform: scale(1.2);
       }
     }
   }
-  
+
+  &-phone {
+    margin-top: 1rem;
+    font-family: $font-stack;
+    font-size: $font-size-medium;
+    color: $white;
+
+    a {
+      color: $white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $bg-soft;
+      }
+    }
+  }
+}

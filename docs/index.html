@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAST</title>
     <link rel="stylesheet" href="scss/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="scripts/postLoad.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="scripts/hamburger.js" defer></script>
   </head>
 <body>
@@ -27,7 +25,6 @@
           <li><a href="about.html">O NAS</a></li>
           <li><a href="offer.html">OFERTA</a></li>
           <li><a href="galery.html">GALERIA</a></li>
-          <li><a href="blog.html">BLOG</a></li>
           <li><a href="contact.html">KONTAKT</a></li>
         </ul>
       </nav>
@@ -63,41 +60,6 @@
   </div>
 </section>
 
-
-<section class="home__discover">
-   <div class="news-updates__container"></div>
-  <!-- Górna część - Obrazek po lewej stronie -->
-  <div class="home__discover-image">
-    <img src="img/ogrod2.jpg" alt="Realizacja ogrodu" />
-  </div>
-  <!-- Treść po prawej stronie -->
-  <div class="home__discover-content">
-    <h2>Odkryj piękno swojego ogrodu</h2>
-    <p>
-      Projektujemy i zakładamy ogrody dostosowane do Twoich potrzeb. 
-      Oferujemy montaż systemów nawadniania, pielęgnację terenów zielonych oraz aranżację przestrzeni publicznych. 
-      Naszym priorytetem jest funkcjonalność, estetyka i trwałość każdej realizacji.
-    </p>
-    <a href="about.html">
-      <button>Dowiedz się więcej</button>
-    </a>
-  </div>
-</section>
-
-<section class="news-updates">
-  <!-- Nagłówek sekcji -->
-  <div class="news-updates__header">
-    <h2>Aktualności</h2>
-    <a href="blog.html">Zobacz wszystkie wpisy →</a>
-  </div>
-
-  <!-- Zawartość sekcji -->
-  <div class="news-updates__content">
-    <!-- Miejsce na wpisy z bloga -->
-  </div>
-  </div>
-</section>
-
 <footer class="footer">
   <div class="footer__content">
     <!-- Sekcja logo i opisu -->
@@ -117,20 +79,28 @@
         <li><a href="about.html">O nas</a></li>
         <li><a href="offer.html">Oferta</a></li>
         <li><a href="galery.html">Galeria</a></li>
-        <li><a href="blog.html">Blog</a></li>
         <li><a href="conctact.html">Kontakt</a></li>
       </ul>
     </div>
 
-    <!-- Sekcja Social Media -->
-    <div class="footer__social">
-      <h4>Kontakt</h4>
-      <ul>
-        <li><a href="https://www.facebook.com/dastogrody" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="mailto:biuro@dastogrody.pl" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
-      </ul>
-    </div>
-  </div>
+   <div class="footer__social">
+  <h4 class="footer__social-title">Kontakt</h4>
+  <ul class="footer__social-list">
+    <li class="footer__social-item">
+      <a href="https://www.facebook.com/dastogrody" target="_blank" aria-label="Facebook" class="footer__social-link">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+    </li>
+    <li class="footer__social-item">
+      <a href="mailto:biuro@dastogrody.pl" aria-label="Email" class="footer__social-link">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+  <p class="footer__social-phone">Zadzwoń: <a href="tel:+48505357689">+48 505 357 689</a></p>
+</div>
+</div>
+
 
   <!-- Dolna część stopki -->
   <div class="footer__bottom">

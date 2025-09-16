@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="scss/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="scripts/gallery.js" defer></script>
     <script src="scripts/hamburger.js" defer></script>
   </head>
   <body>
@@ -26,7 +27,6 @@
           <li><a href="about.html">O NAS</a></li>
           <li><a href="offer.html">OFERTA</a></li>
           <li><a href="galery.html" class="active">GALERIA</a></li>
-          <li><a href="blog.html">BLOG</a></li>
           <li><a href="contact.html">KONTAKT</a></li>
         </ul>
       </nav>
@@ -43,27 +43,33 @@
       </button>
     </div>
   </header>
-      <div class="title_galery">
-        <h1 class="title">GALERIA</h1>
-        <p class="subtitle"> Naszych prac! </p>
-      </div>
-      
+<section class="gallery-section">
+  <div class="gallery-section__title">
+    <h1 class="gallery-section__heading">GALERIA</h1>
+    <p class="gallery-section__subtitle">Naszych prac!</p>
+  </div>
 
-      <div class="gallery">
-          
-          <div class="gallery-item"><img src="img/ogrod2.jpg" alt="Obraz 2"></div>
-          <div class="gallery-item"><img src="img/ogrod3.jpg" alt="Obraz 3"></div>
-          <div class="gallery-item"><img src="img/ogrod4.jpg" alt="Obraz 4"></div>
-          <div class="gallery-item"><img src="img/ogrod5.jpg" alt="Obraz 5"></div>
-          <div class="gallery-item"><img src="img/ogrod6.jpg" alt="Obraz 6"></div>
-          <div class="gallery-item"><img src="img/ogrod1.jpg" alt="Obraz 1"></div>
-          <div class="gallery-item"><img src="img/ogrod7.jpg" alt="Obraz 7"></div>
-          <div class="gallery-item"><img src="img/logo.jpg" alt="Obraz logo"></div>
-          <div class="gallery-item"><img src="img/ogrod8.jpg" alt="Obraz 8"></div>
-          <div class="gallery-item"><img src="img/ogrod9.jpg" alt="Obraz 9"></div>
-          <div class="gallery-item"><img src="img/ogrod10.webp" alt="Obraz 10"></div>
-          <div class="gallery-item"><img src="img/ogrod11.webp" alt="Obraz 10"></div>
-          
-      </div>
+  <div class="gallery-section__grid">
+    <div class="gallery-section__item" data-full="img/ogrod2.jpg"><img src="img/ogrod2.jpg" alt="Obraz 2"></div>
+    <div class="gallery-section__item" data-full="img/ogrod3.jpg"><img src="img/ogrod3.jpg" alt="Obraz 3"></div>
+    <div class="gallery-section__item" data-full="img/ogrod4.jpg"><img src="img/ogrod4.jpg" alt="Obraz 4"></div>
+    <div class="gallery-section__item" data-full="img/ogrod5.jpg"><img src="img/ogrod5.jpg" alt="Obraz 5"></div>
+    <div class="gallery-section__item" data-full="img/ogrod6.jpg"><img src="img/ogrod6.jpg" alt="Obraz 6"></div>
+    <div class="gallery-section__item" data-full="img/ogrod1.jpg"><img src="img/ogrod1.jpg" alt="Obraz 1"></div>
+    <div class="gallery-section__item" data-full="img/ogrod7.jpg"><img src="img/ogrod7.jpg" alt="Obraz 7"></div>
+    <div class="gallery-section__item" data-full="img/ogrod8.jpg"><img src="img/ogrod8.jpg" alt="Obraz 8"></div>
+    <div class="gallery-section__item" data-full="img/ogrod9.jpg"><img src="img/ogrod9.jpg" alt="Obraz 9"></div>
+    <div class="gallery-section__item" data-full="img/ogrod10.jpg"><img src="img/ogrod10.jpg" alt="Obraz 10"></div>
+    <div class="gallery-section__item" data-full="img/ogrod11.jpg"><img src="img/ogrod11.jpg" alt="Obraz 11"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox__close">&times;</span>
+  <span class="lightbox__prev">&#10094;</span>
+  <span class="lightbox__next">&#10095;</span>
+  <img class="lightbox__image" src="" alt="">
+</div>
   </body>
 </html>

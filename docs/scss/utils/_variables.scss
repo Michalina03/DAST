@@ -28,28 +28,18 @@ $bg-soft: #e2fcdd;          // delikatne tło sekcji
 $card-bg: #FFFFFF;          // tło kart
 $muted-green: #EAF6EA;      // subtelne tło przy obrazach
 
-
-// Rozmiary
 $size: (
   sm: 768px,
   md: 1024px,
   lg: 1200px
 );
 
-
-$breakpoints: (
-  "small": 576px,
-  "medium": 768px,
-  "large": 992px,
-  "xlarge": 1200px
-);
-
-// Layout helpers
 $gap: 1.25rem;               // główny gap między kartami
 $container-max-width: 1200px;
 $image-aspect: 3 / 2;        // stosunek obrazu 3:2 (wykorzystujemy aspect-ratio)
 
-// Dodatkowe parametry kart
 $card-radius: 12px;
 $card-padding: 1.25rem;
 $card-shadow: 0 12px 30px rgba(33,50,31,0.07);
+$header-height: 5.5rem;
+$fullscreen-height: calc(100vh - #{$header-height});

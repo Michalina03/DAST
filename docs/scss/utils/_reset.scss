@@ -1,13 +1,57 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: $font-stack;
-    font-size: $base-font-size;
-    background-color: $background-color;
-    color: $secondary-color;
-    line-height: 1.6;
-  }
+@import "../utils/variables";
+/* ============================
+   PODSTAWOWY RESET SCSS
+============================ */
+/* Box-sizing i marginesy */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-stack;
+  font-size: $base-font-size;
+  line-height: 1.5;
+}
+
+/* Lista */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Linki */
+a {
+  text-decoration: none;
+}
+
+/* Obrazy i media */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Formularze */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Tabele */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  margin: 0;
+  font-family: $font-stack;
+  padding-top: $header-height;
+}
+
