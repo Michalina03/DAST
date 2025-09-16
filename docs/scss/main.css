@@ -377,7 +377,6 @@
   padding: 3rem 2rem;
   color: #2f3e2f;
   text-align: center;
-  height: 40vh;
 }
 .about-hero::before {
   content: "";
@@ -611,8 +610,8 @@
   justify-content: stretch;
   overflow: hidden; /* zapobiega przewijaniu tej sekcji na desktop */
   margin-top: 0; /* zakładam, że header nie nachodzi - dopasuj jeśli masz sticky header */
-  /* OBRAZ - po lewej na desktop, na górze na mobile */
-  /* TREŚĆ - po prawej na desktop, poniżej na mobile */
+  /* OBRAZ - po lewej na desktop, poniżej na mobile */
+  /* TREŚĆ - po prawej na desktop, powyżej na mobile */
   /* pojedyncze kafelki */
 }
 .offer-hero__wrapper {
@@ -651,11 +650,7 @@
   background-color: #e2fcdd;
   padding: clamp(1rem, 2.5vw, 3.5rem);
   box-sizing: border-box;
-  overflow: hidden; /* na desktop nie przewijamy całej sekcji */
-  /* Jeżeli chcesz zezwolić na scroll wewnątrz content (gdy treści dużo),
-     odkomentuj poniższe i usuń overflow: hidden powyżej:
-  & { overflow: auto; } 
-  */
+  overflow: hidden;
   /* kafelki */
 }
 .offer-hero__content .offer-hero__title {
@@ -720,7 +715,6 @@
 /* ----------------- MEDIA: tablet/mały laptop ----------------- */
 @media (max-width: 1024px) {
   .offer-hero {
-    /* nadal pełny ekran, ale zmniejszamy paddingy i dopasowujemy obraz */
     height: 100vh;
     min-height: 100vh;
   }
@@ -734,41 +728,43 @@
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 }
-/* ----------------- MOBILE: obraz NA GÓRZE i zajmuje cały ekran ----------------- */
+/* ----------------- MOBILE: najpierw tekst, potem obraz ----------------- */
 @media (max-width: 900px) {
   .offer-hero {
     flex-direction: column;
-    height: auto; /* cała sekcja powinna być przewijalna: najpierw 100vh obraz, potem content */
+    height: auto; /* cała sekcja przewijalna */
     min-height: auto;
     overflow: visible;
-    /* kafelki -> jeden pod drugim (jeśli chcesz, możesz zmienić na 2 kolumny) */
+    /* Content jako pierwszy */
+    /* Obraz jako drugi */
+    /* kafelki -> jeden pod drugim */
   }
   .offer-hero__wrapper {
     flex-direction: column;
     height: auto;
   }
-  .offer-hero__image {
+  .offer-hero__content {
     order: 0;
     width: 100%;
-    height: 100vh; /* obraz zajmuje cały ekran telefonu */
-    min-height: 100vh;
-    max-height: 100vh;
+    height: auto;
+    padding: 1.5rem;
+    justify-content: flex-start;
+    align-items: stretch;
+    z-index: 2; /* tekst zawsze nad obrazem */
   }
-  .offer-hero__image img {
-    height: 100vh;
-    max-height: 100vh;
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    clip-path: none; /* usuń przycinanie na mobile dla lepszego kadrowania */
-  }
-  .offer-hero__content {
+  .offer-hero__image {
     order: 1;
     width: 100%;
     height: auto;
-    padding: 1rem;
-    justify-content: flex-start;
-    align-items: stretch;
+    min-height: 300px; /* minimalna wysokość */
+    overflow: hidden;
+  }
+  .offer-hero__image img {
+    width: 100%;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+    clip-path: none; /* usuń przycinanie na mobile */
   }
   .offer-hero .offer-hero__services {
     grid-template-columns: 1fr;
@@ -782,10 +778,6 @@
 }
 /* bardzo małe ekrany */
 @media (max-width: 480px) {
-  .offer-hero__image img {
-    height: 100vh;
-    max-height: 100vh;
-  }
   .offer-hero__content {
     padding: 0.8rem;
   }

@@ -17,7 +17,7 @@
     height: 100%;
   }
 
-  /* OBRAZ - po lewej na desktop, na górze na mobile */
+  /* OBRAZ - po lewej na desktop, poniżej na mobile */
   &__image {
     flex: 1 1 50%;
     min-width: 360px;
@@ -39,7 +39,7 @@
     }
   }
 
-  /* TREŚĆ - po prawej na desktop, poniżej na mobile */
+  /* TREŚĆ - po prawej na desktop, powyżej na mobile */
   &__content {
     flex: 1 1 50%;
     height: 100%;
@@ -50,12 +50,7 @@
     background-color: $bg-soft;
     padding: clamp(1rem, 2.5vw, 3.5rem);
     box-sizing: border-box;
-    overflow: hidden; /* na desktop nie przewijamy całej sekcji */
-
-    /* Jeżeli chcesz zezwolić na scroll wewnątrz content (gdy treści dużo),
-       odkomentuj poniższe i usuń overflow: hidden powyżej:
-    & { overflow: auto; } 
-    */
+    overflow: hidden;
 
     .offer-hero__title {
       font-size: clamp(1.4rem, 3vw, 2.6rem);
@@ -73,7 +68,7 @@
     }
 
     /* kafelki */
-    &__services, /* fallback: selector jeśli masz zagnieżdżenie */
+    &__services,
     .offer-hero__services {
       width: 100%;
       display: grid;
@@ -97,14 +92,34 @@
     transition: transform .22s ease, box-shadow .22s ease;
     min-height: 96px;
 
-    &:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(33,50,31,0.12); }
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(33,50,31,0.12);
+    }
 
-    &-title { font-size: clamp(1rem, 1.8vw, $font-size-medium); margin-bottom: .4rem; color: $brand-green-dark; }
-    &-text  { font-size: clamp(.85rem, 1.4vw, $font-size-small); line-height: 1.35; }
+    &-title {
+      font-size: clamp(1rem, 1.8vw, $font-size-medium);
+      margin-bottom: .4rem;
+      color: $brand-green-dark;
+    }
 
-    &--contact { background: $brand-green; color: $white;
-      a { color: $white; text-decoration: underline; }
-      h3{color:$white;}
+    &-text {
+      font-size: clamp(.85rem, 1.4vw, $font-size-small);
+      line-height: 1.35;
+    }
+
+    &--contact {
+      background: $brand-green;
+      color: $white;
+
+      a {
+        color: $white;
+        text-decoration: underline;
+      }
+
+      h3 {
+        color: $white;
+      }
     }
   }
 }
@@ -112,51 +127,64 @@
 /* ----------------- MEDIA: tablet/mały laptop ----------------- */
 @media (max-width: 1024px) {
   .offer-hero {
-    /* nadal pełny ekran, ale zmniejszamy paddingy i dopasowujemy obraz */
     height: 100vh;
     min-height: 100vh;
 
-    &__image img { clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%); }
-    &__content { padding: clamp(.8rem, 2.8vw, 2.2rem); }
-    &__services { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-  }
-}
-
-/* ----------------- MOBILE: obraz NA GÓRZE i zajmuje cały ekran ----------------- */
-@media (max-width: 900px) {
-  .offer-hero {
-    flex-direction: column;
-    height: auto; /* cała sekcja powinna być przewijalna: najpierw 100vh obraz, potem content */
-    min-height: auto;
-    overflow: visible;
-
-    &__wrapper { flex-direction: column; height: auto; }
-
-    &__image {
-      order: 0;
-      width: 100%;
-      height: 100vh; /* obraz zajmuje cały ekran telefonu */
-      min-height: 100vh;
-      max-height: 100vh;
-      img {
-        height: 100vh;
-        max-height: 100vh;
-        width: 100%;
-        object-fit: cover;
-        clip-path: none; /* usuń przycinanie na mobile dla lepszego kadrowania */
-      }
+    &__image img {
+      clip-path: polygon(0 0, 78% 0, 100% 50%, 78% 100%, 0 100%);
     }
 
     &__content {
+      padding: clamp(.8rem, 2.8vw, 2.2rem);
+    }
+
+    &__services {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+  }
+}
+
+/* ----------------- MOBILE: najpierw tekst, potem obraz ----------------- */
+@media (max-width: 900px) {
+  .offer-hero {
+    flex-direction: column;
+    height: auto; /* cała sekcja przewijalna */
+    min-height: auto;
+    overflow: visible;
+
+    &__wrapper {
+      flex-direction: column;
+      height: auto;
+    }
+
+    /* Content jako pierwszy */
+    &__content {
+      order: 0;
+      width: 100%;
+      height: auto;
+      padding: 1.5rem;
+      justify-content: flex-start;
+      align-items: stretch;
+      z-index: 2; /* tekst zawsze nad obrazem */
+    }
+
+    /* Obraz jako drugi */
+    &__image {
       order: 1;
       width: 100%;
       height: auto;
-      padding: 1rem;
-      justify-content: flex-start;
-      align-items: stretch;
+      min-height: 300px; /* minimalna wysokość */
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        clip-path: none; /* usuń przycinanie na mobile */
+      }
     }
 
-    /* kafelki -> jeden pod drugim (jeśli chcesz, możesz zmienić na 2 kolumny) */
+    /* kafelki -> jeden pod drugim */
     .offer-hero__services {
       grid-template-columns: 1fr;
       gap: 0.6rem;
@@ -172,7 +200,11 @@
 
 /* bardzo małe ekrany */
 @media (max-width: 480px) {
-  .offer-hero__image img { height: 100vh; max-height: 100vh; }
-  .offer-hero__content { padding: 0.8rem; }
-  .offer-hero__title { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+  .offer-hero__content {
+    padding: 0.8rem;
+  }
+
+  .offer-hero__title {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+  }
 }
